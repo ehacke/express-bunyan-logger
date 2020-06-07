@@ -72,7 +72,7 @@
       "eslint --fix"
     ]
   },
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "peerDependencies": {
     "bunyan": "^1.8.12"
   },
@@ -93,5 +93,5 @@
     "test": "nyc mocha --recursive -r source-map-support/register -r ts-node/register --use_strict --exit \"tests/**/*.+(unit|it).+(ts|js)\"",
     "unit": "nyc mocha --recursive -r source-map-support/register -r ts-node/register --use_strict --exit \"tests/**/*.unit.+(ts|js)\""
   },
-  "types": "dist/src/index.d.ts"
+  "types": "dist/index.d.ts"
 }
