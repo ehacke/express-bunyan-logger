@@ -134,7 +134,7 @@ export const logger = (opts: ExpressLoggerOptionsInterface = {}) => {
       const level = levelFn(status, err, meta);
       const logFn = level && childLogger[level] ? childLogger[level] : childLogger.info;
 
-      logFn.call(childLogger, meta, formatFunction(meta));
+      logFn.call(childLogger, formatFunction(meta));
     };
 
     if (immediate) {
