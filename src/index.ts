@@ -64,7 +64,7 @@ const defaultGenReqId = (req): string => {
 };
 
 export const logger = (opts: ExpressLoggerOptionsInterface = {}) => {
-  const innerLogger: bunyan =
+  const childLogger: bunyan =
     opts.logger ||
     bunyan.createLogger({
       name: opts.name || 'express',
@@ -85,13 +85,8 @@ export const logger = (opts: ExpressLoggerOptionsInterface = {}) => {
   return (err, req, res, next) => {
     const startTime = process.hrtime();
 
-    let requestId;
+    genReqId(req);
 
-    if (genReqId) {
-      requestId = genReqId(req);
-    }
-
-    const childLogger = requestId !== undefined ? innerLogger.child({ req_id: requestId }) : innerLogger;
     req.log = childLogger;
 
     const loggingCallback = (incoming: boolean): void => {
